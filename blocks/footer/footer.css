@@ -22,10 +22,16 @@ footer .footer p {
   margin: 0 0 16px;
 }
 
+footer picture {
+  display: inline-block;
+  width: 64px !important;
+}
+
 footer img {
   filter: brightness(0) invert(1);
   width: 64px !important;
   height: auto !important;
+  max-width: 64px !important;
 }
 
 footer .footer ul {
