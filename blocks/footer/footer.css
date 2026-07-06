@@ -8,10 +8,14 @@ footer a {
   color: #fff;
 }
 
-footer .footer > div {
+footer .footer {
   margin: auto;
   max-width: 1200px;
   padding: 40px 24px 24px;
+}
+
+footer .footer > div {
+  margin-bottom: 24px;
 }
 
 footer .footer p {
@@ -44,14 +48,14 @@ footer .footer ul a:hover {
   text-decoration: underline;
 }
 
-footer .footer > div > div:last-child p:last-child {
+footer .footer > div:last-child p:last-child {
   opacity: 0.7;
   font-size: 12px;
   margin-top: 16px;
 }
 
 @media (width >= 900px) {
-  footer .footer > div {
+  footer .footer {
     padding: 40px 32px 24px;
   }
 }
