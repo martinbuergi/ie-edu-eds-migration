@@ -123,17 +123,16 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 128px;
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
-  padding: 12px 0;
 }
 
 header nav .nav-brand img,
 header nav .nav-brand picture {
-  width: 90px;
+  width: 70px;
   height: auto;
+  display: block;
 }
 
 header nav .nav-brand a {
@@ -161,6 +160,7 @@ header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
   font-size: var(--body-font-size-s);
+  margin: 0;
 }
 
 header nav .nav-sections ul > li {
@@ -216,15 +216,9 @@ header nav .nav-tools .button:hover {
     visibility: hidden;
   }
 
+  /* Switch to a simple stacked block layout instead of grid for reliability */
   header nav {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-      'utility utility utility'
-      'brand   brand   tools'
-      'sections sections sections';
-    align-items: center;
-    gap: 0;
+    display: block;
     max-width: unset;
     padding: 0;
     height: auto;
@@ -235,9 +229,8 @@ header nav .nav-tools .button:hover {
     overflow: visible;
   }
 
-  /* utility bar row */
+  /* utility bar row - full width, own line, above everything else */
   header nav > div:nth-child(4) {
-    grid-area: utility;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -247,6 +240,7 @@ header nav .nav-tools .button:hover {
     gap: 32px;
     flex-wrap: nowrap;
     overflow-x: auto;
+    width: 100%;
   }
 
   header nav > div:nth-child(4) p {
@@ -281,29 +275,39 @@ header nav .nav-tools .button:hover {
     text-decoration: underline;
   }
 
-  /* brand row */
+  /* brand + tools row: logo (left) and CTA button (right) on the same visual row */
+  header nav {
+    position: relative;
+  }
+
   header nav > .nav-brand {
-    grid-area: brand;
+    display: flex;
+    align-items: center;
+    width: 100%;
     padding: 16px 32px 8px;
+    box-sizing: border-box;
   }
 
   header nav .nav-brand img,
   header nav .nav-brand picture {
-    width: 110px;
+    width: 100px;
   }
 
   header nav > .nav-tools {
-    grid-area: tools;
-    justify-self: end;
-    align-self: center;
-    padding: 0 32px 0 0;
+    position: absolute;
+    top: 56px;
+    right: 32px;
+    width: auto;
+    padding: 0;
+    text-align: right;
   }
 
   header nav .nav-sections {
     display: block;
     visibility: visible;
     white-space: nowrap;
-    grid-area: sections;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0 32px 20px;
   }
 
