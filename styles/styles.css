@@ -342,3 +342,11 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* top-level section headings (e.g. "Somos IE University") - IE brand treatment */
+main > .section > div > h2 {
+  color: var(--brand-color);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 800;
+}
