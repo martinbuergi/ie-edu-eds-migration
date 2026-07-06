@@ -22,10 +22,10 @@ footer .footer p {
   margin: 0 0 16px;
 }
 
-footer .footer img {
+footer img {
   filter: brightness(0) invert(1);
-  width: 64px;
-  height: auto;
+  width: 64px !important;
+  height: auto !important;
 }
 
 footer .footer ul {
