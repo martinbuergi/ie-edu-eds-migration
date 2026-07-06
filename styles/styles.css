@@ -16,12 +16,17 @@
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --link-color: #000066;
+  --link-hover-color: #1a1a75;
+
+  /* IE University brand colors */
+  --brand-color: #000066;
+  --brand-color-light: #1a1a75;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: montserrat, montserrat-fallback, sans-serif;
+  --heading-font-family: montserrat, montserrat-fallback, sans-serif;
+  --serif-font-family: 'PT Serif', georgia, serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -42,15 +47,16 @@
 
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
+  font-family: montserrat-fallback;
+  size-adjust: 100%;
   src: local('Arial');
 }
 
 @font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+  font-family: montserrat;
+  src: url('https://fonts.gstatic.com/s/montserrat/v26/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
 }
 
 @media (width >= 900px) {
@@ -179,16 +185,29 @@ button.button {
   max-width: 100%;
   margin: 0;
   border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border-radius: 0;
+  padding: 0.9em 1.4em;
   font: inherit;
-  font-weight: 500;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  background-color: var(--background-color);
+  color: var(--brand-color);
+  border-color: var(--background-color);
+}
+
+a.button:hover,
+a.button:focus-visible,
+button.button:hover,
+button.button:focus-visible {
+  background-color: var(--light-color);
+  color: var(--brand-color);
 }
 
 a.button[aria-disabled="true"],
