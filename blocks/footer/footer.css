@@ -24,6 +24,8 @@ footer .footer p {
 
 footer .footer img {
   filter: brightness(0) invert(1);
+  width: 64px;
+  height: auto;
 }
 
 footer .footer ul {
