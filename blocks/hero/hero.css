@@ -5,15 +5,21 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 64px 24px;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+/* dark gradient overlay for legibility over any background image */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(90deg, rgb(0 0 20 / 55%) 0%, rgb(0 0 20 / 30%) 45%, rgb(0 0 20 / 5%) 75%);
 }
 
 .hero picture {
@@ -30,8 +36,74 @@
   height: 100%;
 }
 
+/* text content sits left-aligned, contained to roughly half width, directly over the image */
+.hero > h1,
+.hero > p {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin-left: 0;
+  margin-right: auto;
+  color: #fff;
+}
+
+.hero h1 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  font-family: var(--serif-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  max-width: 560px;
+}
+
+.hero p em {
+  font-style: italic;
+}
+
+.hero .button-container {
+  margin-top: 8px;
+}
+
+.hero a.button {
+  background-color: #fff;
+  color: var(--brand-color);
+  border-color: #fff;
+  border-radius: 0;
+  font-weight: 700;
+}
+
+.hero a.button:hover {
+  background-color: var(--light-color);
+}
+
+/* campus CTA banner variant - shorter, centered button, no heading/subhead needed */
+.hero.campus-cta {
+  min-height: 320px;
+  justify-content: center;
+}
+
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 96px 64px;
+    min-height: 680px;
+  }
+
+  .hero h1 {
+    font-size: var(--heading-font-size-xl);
+  }
+
+  .hero p {
+    font-size: var(--body-font-size-m);
   }
 }
