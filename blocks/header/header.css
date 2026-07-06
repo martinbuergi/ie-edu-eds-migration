@@ -1,11 +1,12 @@
-/* header and nav layout */
+/* header and nav layout - IE University two-tier navy header */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--brand-color);
   width: 100%;
   z-index: 2;
   position: fixed;
 }
 
+/* Utility bar - 4th div, unclassed by header.js, rendered above the main nav row via flex order */
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -19,6 +20,7 @@ header nav {
   height: var(--nav-height);
   padding: 0 24px;
   font-family: var(--body-font-family);
+  color: #fff;
 }
 
 header nav[aria-expanded='true'] {
@@ -28,6 +30,14 @@ header nav[aria-expanded='true'] {
     'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
+  background-color: var(--brand-color);
+}
+
+/* utility bar: the 4th (unclassed) direct child div of nav */
+header nav > div:nth-child(4) {
+  grid-column: 1 / -1;
+  order: -1;
+  display: none;
 }
 
 @media (width >= 900px) {
@@ -37,15 +47,76 @@ header nav[aria-expanded='true'] {
 
   header nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    max-width: unset;
+    padding: 0;
+    height: auto;
   }
 
   header nav[aria-expanded='true'] {
     min-height: 0;
     overflow: visible;
+  }
+
+  header nav > div:nth-child(4) {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #00003d;
+    padding: 8px 32px;
+    font-size: 13px;
+    order: -1;
+    gap: 24px;
+  }
+
+  header nav > div:nth-child(4) ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  header nav > div:nth-child(4) p {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  header nav > div:nth-child(4) a {
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.85;
+  }
+
+  header nav > div:nth-child(4) a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  /* brand + sections + tools row, full width, padded like main content */
+  header nav > .nav-brand,
+  header nav > .nav-sections,
+  header nav > .nav-tools {
+    max-width: 1264px;
+    box-sizing: border-box;
+  }
+
+  header nav {
+    padding: 0;
+  }
+
+  header nav > .nav-brand {
+    padding-left: 32px;
+  }
+
+  header nav > .nav-tools {
+    padding-right: 32px;
   }
 }
 
@@ -146,11 +217,29 @@ header .nav-brand {
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
+  padding: 12px 24px;
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 96px;
   height: auto;
+}
+
+header nav .nav-brand a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  header nav .nav-brand {
+    padding: 20px 0 12px;
+  }
+
+  header nav .nav-brand img {
+    width: 110px;
+  }
 }
 
 /* sections */
@@ -174,7 +263,20 @@ header nav .nav-sections ul {
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 13px;
+  color: #fff;
+}
+
+header nav .nav-sections ul > li > a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header nav .nav-sections ul > li > a:hover {
+  text-decoration: underline;
 }
 
 header nav .nav-sections ul > li > ul {
@@ -190,6 +292,9 @@ header nav .nav-sections ul > li > ul > li {
     display: block;
     visibility: visible;
     white-space: nowrap;
+    flex-basis: 100%;
+    order: 3;
+    padding: 0 32px 20px;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
@@ -269,4 +374,24 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+  padding: 12px 24px;
+}
+
+header nav .nav-tools .button {
+  background-color: transparent;
+  color: #fff;
+  border-color: #fff;
+  font-size: 13px;
+  padding: 0.7em 1.2em;
+}
+
+header nav .nav-tools .button:hover {
+  background-color: #fff;
+  color: var(--brand-color);
+}
+
+@media (width >= 900px) {
+  header nav .nav-tools {
+    padding: 20px 32px 12px 0;
+  }
 }
