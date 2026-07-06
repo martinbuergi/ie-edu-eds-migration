@@ -42,7 +42,7 @@ header nav a:any-link {
 }
 
 /* utility bar: the 4th (unclassed) direct child div of nav - hidden on mobile to keep hamburger menu simple */
-header nav > div:nth-child(4) {
+header nav > div:nth-child(5) {
   display: none;
 }
 
@@ -216,9 +216,10 @@ header nav .nav-tools .button:hover {
     visibility: hidden;
   }
 
-  /* Switch to a simple stacked block layout instead of grid for reliability */
+  /* Switch to a simple stacked flex layout instead of grid for reliability */
   header nav {
-    display: block;
+    display: flex;
+    flex-direction: column;
     max-width: unset;
     padding: 0;
     height: auto;
@@ -229,8 +230,9 @@ header nav .nav-tools .button:hover {
     overflow: visible;
   }
 
-  /* utility bar row - full width, own line, above everything else */
-  header nav > div:nth-child(4) {
+  /* utility bar row - full width, own line, above everything else via flex order */
+  header nav > div:nth-child(5) {
+    order: -1;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -243,7 +245,7 @@ header nav .nav-tools .button:hover {
     width: 100%;
   }
 
-  header nav > div:nth-child(4) p {
+  header nav > div:nth-child(5) p {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -252,7 +254,7 @@ header nav .nav-tools .button:hover {
     flex-shrink: 0;
   }
 
-  header nav > div:nth-child(4) ul {
+  header nav > div:nth-child(5) ul {
     display: flex;
     gap: 20px;
     list-style: none;
@@ -264,28 +266,25 @@ header nav .nav-tools .button:hover {
     flex-shrink: 0;
   }
 
-  header nav > div:nth-child(4) a {
+  header nav > div:nth-child(5) a {
     text-decoration: none;
     color: #fff;
     opacity: 0.85;
   }
 
-  header nav > div:nth-child(4) a:hover {
+  header nav > div:nth-child(5) a:hover {
     opacity: 1;
     text-decoration: underline;
   }
 
-  /* brand + tools row: logo (left) and CTA button (right) on the same visual row */
-  header nav {
-    position: relative;
-  }
-
+  /* brand row: logo, own line */
   header nav > .nav-brand {
     display: flex;
     align-items: center;
     width: 100%;
     padding: 16px 32px 8px;
     box-sizing: border-box;
+    min-height: 64px;
   }
 
   header nav .nav-brand img,
@@ -293,10 +292,12 @@ header nav .nav-tools .button:hover {
     width: 100px;
   }
 
+  /* CTA button: pulled up via negative margin to sit visually on the brand row, right-aligned */
   header nav > .nav-tools {
-    position: absolute;
-    top: 56px;
-    right: 32px;
+    align-self: flex-end;
+    margin-top: -64px;
+    margin-right: 32px;
+    margin-bottom: 32px;
     width: auto;
     padding: 0;
     text-align: right;
